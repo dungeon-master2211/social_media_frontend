@@ -1,0 +1,750 @@
+body,html{
+    padding: 0;
+    margin:0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+html{
+    height: 100%;
+}
+.chat-app{
+    /* display: grid;
+    grid-template-rows: 1fr ;
+    grid-template-columns: 3fr 9fr; */
+    
+    height: 80vh;
+    width: 800px;
+    max-width: 800px;
+    margin:1rem 0;
+}
+@media screen and (max-width:599px) {
+    .chat-app{
+        width: 290px;
+    }
+}
+@media screen and (min-width:600) and (max-width:800px) {
+    .chat-app{
+        width: 599px;
+    }
+}
+.userwindow{
+    border:1px solid black;
+    overflow-y: scroll;
+}
+.chatwindow{
+    border:1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+
+}
+.chatwindow-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    background-color: rgb(0, 92, 0);
+    color: white;
+    border-radius: 10px 10px 0 0;
+}
+.back-btn{
+    margin-right: 10px;
+}
+.chatwindow-username{
+    margin: 0;
+    padding: 0;
+
+}
+.user{
+    border: 1px solid lightgrey;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+
+}
+.small-avatar-wrapper{
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 100%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-right: 50px;
+    background-color: white;
+}
+.small-avatar-wrapper .small-avatar{
+    width: 100%;
+
+}
+.msgtextbox{
+    display: flex;
+    justify-content: space-evenly;
+    /* grid-template-columns: 10fr 2fr; */
+    height: 50px;
+    /* border: 1px solid black; */
+    margin: 10px 0;
+    
+}
+.chat-typing{
+    color:green;
+    display: block;
+}
+.chat-typing-2{
+    color:white;
+    display: block;
+}
+.msgtextbox textarea{
+    border-radius: 20px;
+    outline: none;
+    border:1px solid lightgray;
+    /* margin: 10px 1px; */
+    padding: 10px;
+    width: 80%;
+    word-wrap: break-word;
+    resize: none;
+    
+}
+.msgtextbox button{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+.userchats{
+    border-top:1px solid black;
+    height: 50vh;
+    max-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    background-color: rgb(255, 221, 177);
+}
+.each-chat{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    margin:5px 0;
+
+}
+.mymsg{
+    display: block;
+    width: fit-content;
+    max-width: 200px;
+    background-color: rgb(80, 247, 80);
+    padding:10px;
+    align-self: flex-start;
+    border-radius:0 0 0 20px;
+    
+}
+.friendmsg{
+    display: block;
+    width: fit-content;
+    max-width: 200px;
+    background-color: rgb(57, 91, 245);
+    padding:10px;
+    align-self: flex-end;
+    border-radius:0 0 20px 0;
+}
+.banner{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    max-width: 700px;
+    margin: 100px auto 0 auto;
+    padding: 2rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    /* border: 1px solid black; */
+}
+
+.banner-image{
+    height: 400px;
+    
+}
+.modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /* border:1px solid black; */
+    max-width: 300px;
+    padding: 2rem;
+    /* margin:150px auto; */
+    
+}
+.form-error{
+    color:red;
+}
+.selection-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* background-color: aquamarine; */
+    width: 100%;
+    padding: 1rem;
+
+}
+.show-selected-comp{
+    padding:1rem;
+}
+.selector-btn{
+    padding: 10px;
+    background: none;
+    outline: none;
+    border:none;
+    cursor: pointer;
+    width: 50%;
+    font-size: large;
+    font-weight: 700;
+}
+.selected{
+    background-color: lightgrey;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.signup-form form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap:0.5rem;
+}
+.signup-form .form-normal input{
+    line-height: 50px;
+    border:none;
+    border-bottom:1px solid green;
+    outline: none;
+}
+.preview-img{
+    height: 200px;
+    width: 200px;
+    transition: ease-in-out 0.2s;
+}
+.preview-img:hover{
+    transform: scale(1.5);
+}
+
+.signup-form .form-normal .submit-btn,.login .submit-btn{
+    padding: 0.5rem;
+    border-radius:10px;
+    border:1px solid green;
+    background-color: white;
+    cursor: pointer;
+    font-size: large;
+    font-weight: 700;
+
+}
+.signup-form .form-normal .submit-btn:hover,.login .submit-btn:hover{
+    color:white;
+    background-color: green;
+}
+
+
+.login .login-form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap:0.5rem;
+}
+
+.login-form input{
+    line-height: 50px;
+    border:none;
+    border-bottom:1px solid green;
+    outline: none;
+}
+
+.main-body{
+    /* display: grid;
+    grid-template-columns: 12;
+    height: 100vh; */
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.sidebar{
+    /* grid-row: auto;
+    grid-column: 1/4; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right:1px solid black;
+    width: 200px;
+    max-width: 300px;
+}
+.sidebar .side-section{
+    padding: 1rem;
+    width: 50%;
+    text-align: center;
+    margin: 20px auto;
+    
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar .side-section:hover{
+    background-color: rgb(107, 255, 107);
+}
+.sidebar .side-section .side-link{
+    text-decoration: none;
+    color:black;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    
+}
+.logout-btn{
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+}
+
+.content{
+    /* grid-row: auto;
+    grid-column: 4/13; */
+    /* border:1px solid red; */
+    margin: 0 auto;
+}
+
+@media screen and (max-width:1023px) {
+    .main-body{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: relative;
+        padding-bottom: 6rem;
+    }
+    .sidebar{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        max-width: 100%;
+        border:none;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        position: fixed;
+        bottom: 0;
+        /* left: 0;
+        right: 0; */
+        background-color:white;
+    }
+    .sidebar .side-section{
+        width: 40px;
+        border: none;
+        box-shadow: none;
+        padding: 10px;
+    }
+    .sidebar .side-section .side-link{
+        font-size: 10px;
+        
+    }
+    
+}
+
+.writepost{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.writepost-text{
+    border-radius: 10px;
+    padding: 10px;
+    font-size: x-large;
+    resize: none;
+}
+
+.writepost .user-detail{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5rem;
+    gap: 1rem;
+}
+.writepost .user-detail img{
+    height:50px;
+    width: 50px;
+    border-radius: 100%;
+}
+.writepost textarea{
+    margin: 0.5rem;
+    height: 100px;
+}
+.writepost .post-buttons{
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.writepost-send, .writepost-attach{
+    border:none;
+    border-radius: 10px;
+    outline: none;
+    padding: 1rem;
+    margin-right: 10px;
+    background:none;
+    cursor: pointer;
+    font-size: large;
+
+}
+.writepost-send:hover, .writepost-attach:hover{
+    background-color: lightblue;
+}
+
+
+.postcard {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    max-width: 900px;
+    margin: 10px auto;
+}
+.postcard .authordetail{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:0.5rem;
+}
+.authorsubdetail p{
+    margin: 0;
+}
+.postcard .authordetail img{
+    height:50px;
+    width: 50px;
+    border-radius: 100%;
+}
+
+.post-text{
+    white-space: pre-line;
+}
+.post-img{
+    height: 200px;
+    width: 200px;
+    margin:0 auto;
+}
+.like-btn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.post-btn-grp{
+    display: flex;
+    flex-direction: row;
+    gap:1rem;
+}
+.post-actions{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.post-actions span{
+    font-size: x-large;
+    cursor: pointer;
+    padding:1rem;
+}
+.post-actions span:hover{
+    background-color: lightblue;
+    border-radius: 10px;
+}
+.edit-modal{
+    /* position: fixed; */
+    top:10px;
+    background-color: lightgray;
+    padding: 2rem;
+    border-radius: 10px;
+    
+    
+    
+}
+@media screen and (max-width:469px) {
+    .edit-modal{
+        width: 200px;
+    }
+    .edit-modal textarea{
+        width: 15em;
+    }
+}
+.comment-modal{
+   
+    padding:2rem;
+    background-color: rgba(211,211,211,0.6);
+    margin: 0 auto;
+    width: 300px;
+    max-width: 300px;
+    border-radius: 10px;
+}
+.comment-textarea{
+    width: 90%;
+    resize: none;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    padding:10px;
+}
+.post-comments{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.comment-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.comment-wrapper h5,p{
+    margin: 0;
+}
+.comment-imagewrapper{
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 100%;
+}
+.comment-imagewrapper img{
+    width: 100%;
+}
+.people{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.searchbar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding: 5px;
+}
+.searchbar .search-text{
+    
+    padding: 10px;
+    border: none;
+    outline: none;
+    
+}
+.searchbar .search-btn{
+    background: none;
+    padding: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.addfriend-btn{
+    border: 1px solid blue;
+    color:black;
+    outline: none;
+    padding:1rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.addfriend-btn:hover{
+    background-color: blue;
+    color:white;
+}
+
+.people-section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 800px;
+    margin:1rem auto;
+    gap:0.5rem;
+}
+
+.people-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    max-width: 200px;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.people-card .avatar{
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+.people-card .avatar img{
+    width: 100%;
+
+    /* border-radius: 100%; */
+}
+
+.profile-tab{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+}
+.profile-tab .profile-image-wrapper{
+    border-radius: 100%;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+}
+.profile-image-wrapper img{
+    width: 100%;
+}
+.profile-btn-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    max-width: 200px;
+    margin:0 auto;
+}
+.profile-btn-group button{
+    padding:0.6rem;
+    width: 5rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.profile-btn-group button:hover{
+    background-color: greenyellow;
+
+}
+.myfriends-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.myfriends-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width:200px;
+    padding: 1rem;
+    margin:5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; ;
+    border-radius: 10px;
+}
+.myfriends-card .avatar{
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 100%;
+}
+.myfriends-card .avatar img{
+    width: 100%;
+}
+
+.view-profile-btn, .unfriend-btn{
+    padding:10px;
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 20px;
+    outline: none;
+    margin-top: 10px;
+}
+
+
+.requests{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding:1rem;
+}
+.request-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin: 10px;
+    box-shadow: 0 1px 4px #00000029;
+    border-radius: 10px;
+}
+.request-card .avatar{
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    overflow: hidden;
+    box-shadow: 0 1px 4px #00000029;
+}
+
+.request-card .avatar img{
+    width: 100%;
+}
+
+.request-action-btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.accept-btn{
+    padding:10px;
+    outline: none;
+    border: 1px solid blue;
+    border-radius: 30px;
+    width: 5rem;
+    cursor: pointer;
+
+}
+.accept-btn:hover{
+    background-color: blue;
+    color: white;
+}
+
+.reject-btn{
+    padding:10px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 30px;
+    width: 5rem;
+    cursor: pointer;
+}
+
+.reject-btn:hover{
+    background-color: black;
+    color: white;
+}
+
+.card-shimmer{
+    width: 250px;
+    height: 250px;
+    background-color: lightgray;
+}
+
+@media screen and (max-width:767px){
+    .banner{
+        flex-direction: column;
+        
+        margin: 0 auto;
+    }
+    .banner-image{
+        height: 200px;
+    }
+}
