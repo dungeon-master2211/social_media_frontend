@@ -464,21 +464,72 @@ html {
   border-radius: 10px;
 }
 
+.post-actions .comment-icon {
+  margin-top: 5px;
+}
+
+.deletePopupWrapper {
+  height: 100%;
+  width: 100%;
+  background-color: #00000080;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.deletePopup {
+  width: 200px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 8em auto;
+  padding: 10px;
+  position: relative;
+}
+
+.deleteText {
+  text-align: center;
+  margin: 20px 0 0;
+  font-size: large;
+  font-weight: 700;
+}
+
+.deleteButtons {
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20px 0 0;
+  display: flex;
+}
+
+.deleteButtons button {
+  width: 50%;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 1rem;
+}
+
+.deleteYes {
+  background-color: tomato;
+  border-radius: 10px 0 0 10px;
+}
+
+.deleteNo {
+  background-color: #adff2f;
+  border-radius: 0 10px 10px 0;
+}
+
 .edit-modal {
   background-color: #d3d3d3;
   border-radius: 10px;
+  margin-top: 10px;
   padding: 2rem;
-  top: 10px;
 }
 
-@media screen and (max-width: 469px) {
-  .edit-modal {
-    width: 200px;
-  }
-
-  .edit-modal textarea {
-    width: 15em;
-  }
+.edit-modal textarea {
+  width: 100%;
+  height: 200px;
+  resize: none;
 }
 
 .comment-modal {
@@ -565,16 +616,19 @@ html {
 
 .addfriend-btn {
   color: #000;
+  color: #fff;
   cursor: pointer;
+  background-color: #00f;
   border: 1px solid #00f;
-  border-radius: 10px;
+  border-radius: 50px;
   outline: none;
-  padding: 1rem;
+  padding: .5rem 1rem;
 }
 
 .addfriend-btn:hover {
-  color: #fff;
-  background-color: #00f;
+  color: #000;
+  background-color: #c2fd36;
+  border: 1px solid #c2fd36;
 }
 
 .people-section {

@@ -13,11 +13,20 @@ const Postcard = ({author,createdAt,post_text,post_img,_id}) => {
   const [like,setLike] = useState(allUsersWhoLiked.includes(user._id))
   const [noOfLikes,setNoOfLikes] = useState(-1)
   const [showComment,setShowComment] = useState(false)
+  const [showPopup,setShowPopup] = useState(false)
+
   function saveEditedPost(){
     setShowModal(false)
     editPost(dispatch,_id,postText)
   }
+  function openPopup(){
+    setShowPopup(true)
+  }
+  function closePopup(){
+    setShowPopup(false)
+  }
   function deleteClickedPost(){
+    closePopup()
     deletePost(dispatch,_id)
   }
   async function getNoOfLikes(){
@@ -106,18 +115,31 @@ const Postcard = ({author,createdAt,post_text,post_img,_id}) => {
         <div className='post-actions'>
           {/* allUsersWhoLiked.includes(user._id) */}
         <span className="like-btn" onClick={like?()=>unlikeThisPost() :()=>likeThisPost()}>{like?<AiFillLike/>:<BiLike/>}{noOfLikes}</span>
-        <span onClick={()=>handleCommentClick()}><BiCommentDetail/></span>
+        <span onClick={()=>handleCommentClick()} className='comment-icon'><BiCommentDetail/></span>
         
         {/* {author?._id!==user?._id && <span><AiOutlineShareAlt/></span>} */}
         {author?._id==user?._id && <div className='post-btn-grp'>
           
           <span onClick={()=>setShowModal(true)}><FiEdit/></span>
-          <span onClick={()=>deleteClickedPost()}><ImBin/></span>
+          <span onClick={()=>openPopup()}><ImBin/></span>
         </div>}
         </div>
+        {
+          showPopup && <div className='deletePopupWrapper' onClick={()=>closePopup()}>
+            <div className='deletePopup'>
+              <p className='deleteText'>Are you sure?</p>
+              <div className='deleteButtons'>
+                <button className='deleteYes' onClick={()=>deleteClickedPost()}>Yes</button>
+                <button onClick={()=>closePopup()} className='deleteNo'>No</button>
+              </div>
+              
+            </div>
+            
+          </div>
+        }
         
         {showModal && <div className='edit-modal'>
-          <textarea cols={50} rows={10} onChange={(e)=>setPostText(e.target.value)} value={postText}></textarea>
+          <textarea onChange={(e)=>setPostText(e.target.value)} value={postText}></textarea>
           <div className='modal-btn-grp'>
             <button onClick={()=>saveEditedPost()}>Save</button>
             <button onClick={()=>setShowModal(false)}>Cancel</button>
