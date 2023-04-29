@@ -1,1 +1,1 @@
-export const backend_url = "https://smb-eight.vercel.app/api/v1"
+export const backend_url = "https://chat-backend-00et.onrender.com/api/v1"
