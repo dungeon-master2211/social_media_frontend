@@ -44,6 +44,7 @@ export const loginUser = async(dispatch,body)=>{
             mode:'cors',
             headers:{
                 'Content-Type':'application/json',
+                "Access-Control-Allow-Credentials": true,
             },
             body:JSON.stringify(body)
         })
@@ -71,6 +72,8 @@ export const loadProfile = async(dispatch)=>{
             mode:'cors',
             headers:{
                 'Content-Type':'application/json',
+                "Access-Control-Allow-Credentials": true,
+
             }
         })
 
@@ -140,7 +143,8 @@ export const getMyPosts = async(dispatch)=>{
     try{
         const res = await fetch(backend_url+'/myposts',{
             method:'GET',
-            credentials:'include'
+            credentials:'include',
+            
         })
         const data = await res.json()
         if(data?.status==='success'){
