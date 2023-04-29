@@ -50,6 +50,7 @@ export const loginUser = async(dispatch,body)=>{
         })
         const data = await res.json()
         if(data.status==='success'){
+            document.cookie = `chatapp=${data.token}`
             dispatch(loginUserSuccess({
                 message:data.message,
                 user:data.user
