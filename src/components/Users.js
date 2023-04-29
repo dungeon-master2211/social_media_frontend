@@ -4,7 +4,7 @@ import { backend_url } from "../constants";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import {io} from "socket.io-client"
-const socket = io('http://localhost:5000',{
+const socket = io('https://smb-eight.vercel.app',{
     autoConnect:false
 })
 const Users = ()=>{

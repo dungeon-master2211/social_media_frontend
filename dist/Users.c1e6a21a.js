@@ -596,7 +596,7 @@ var _shimmerDefault = parcelHelpers.interopDefault(_shimmer);
 var _reactRouterDom = require("react-router-dom");
 var _socketIoClient = require("socket.io-client");
 var _s = $RefreshSig$();
-const socket = (0, _socketIoClient.io)("http://localhost:5000", {
+const socket = (0, _socketIoClient.io)("https://smb-eight.vercel.app", {
     autoConnect: false
 });
 const Users = ()=>{
