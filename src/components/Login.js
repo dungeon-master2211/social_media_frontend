@@ -7,7 +7,7 @@ import { loginUser } from "../utils/action";
 import { LineWave } from "react-loader-spinner"
 const Login = () => {
     const [userid, setUserId] = useState('')
-    const [loginStarted, setLoginStarted] = useState(false)
+    
     const dispatch = useDispatch()
     const navigate = useNavigate()
     console.log('login')
@@ -15,7 +15,10 @@ const Login = () => {
     useEffect(() => {
         if (isAuthenticated) navigate('/profile')
     }, [isAuthenticated])
-    if (message) toast(message)
+    if (message) {
+        toast(message)
+       
+    }
 
 
     return (
@@ -33,7 +36,7 @@ const Login = () => {
                     return errors
                 }}
                 onSubmit={(values) => {
-                    setLoginStarted(true)
+                    
                     loginUser(dispatch, {
                         email: values.email,
                         password: values.password
@@ -47,16 +50,16 @@ const Login = () => {
                         <input type='password' name="password" value={values.password} onChange={handleChange} placeholder="Password"></input>
                         <div className="form-error">{errors.password && touched.password && errors.password}</div>
                         <button className="submit-btn" type="submit" disabled={isLoading}>Login <LineWave
-                            height="100"
-                            width="100"
+                            height="30"
+                            width="30"
                             color="#4fa94d"
                             ariaLabel="line-wave"
                             wrapperStyle={{}}
                             wrapperClass=""
-                            visible={loginStarted}
-                            firstLineColor=""
-                            middleLineColor=""
-                            lastLineColor=""
+                            visible={isLoading}
+                            firstLineColor="white"
+                            middleLineColor="white"
+                            lastLineColor="white"
                         /></button>
                     </form>
 

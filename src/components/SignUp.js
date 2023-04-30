@@ -7,15 +7,21 @@ import { LineWave } from "react-loader-spinner"
 const SignUp = ()=>{
     const [avatar,setAvatar] = useState('')
     const dispatch = useDispatch()
-    const [loginStarted, setLoginStarted] = useState(false)
+    
     const {isLoading,message,error} = useSelector(store=>store.userSignup)
     
-    if(message) toast(message,{
+    if(message) {
+        toast(message,{
         toastId: "customId1"
       })
-    if(error) toast(error,{
+      
+    }
+    if(error) {
+        toast(error,{
         toastId: "customId2"
       })
+      
+    }
     return(
         <div className="signup-form">
             
@@ -51,7 +57,7 @@ const SignUp = ()=>{
                 values.confirmPassword=''
                 values.profilePicUrl=''
                 setAvatar('')
-                setLoginStarted(true)
+                
             }}
             >
                 {({
@@ -75,16 +81,16 @@ const SignUp = ()=>{
                             }}></input>
                         {avatar && <img className="preview-img" src={avatar} alt="avatar"></img>}
                         <button type="submit" className="submit-btn" disabled={isLoading}>Submit <LineWave
-                            height="100"
-                            width="100"
+                            height="30"
+                            width="30"
                             color="#4fa94d"
                             ariaLabel="line-wave"
                             wrapperStyle={{}}
                             wrapperClass=""
-                            visible={loginStarted}
-                            firstLineColor=""
-                            middleLineColor=""
-                            lastLineColor=""
+                            visible={isLoading}
+                            firstLineColor="white"
+                            middleLineColor="white"
+                            lastLineColor="white"
                         /></button>
                     </form>
                 )}
