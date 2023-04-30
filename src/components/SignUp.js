@@ -3,11 +3,11 @@ import { useEffect, useState } from "react"
 import { useSelector,useDispatch } from "react-redux"
 import { signup,resetSignup } from "../utils/action"
 import { ToastContainer, toast } from 'react-toastify';
-
+import { LineWave } from "react-loader-spinner"
 const SignUp = ()=>{
     const [avatar,setAvatar] = useState('')
     const dispatch = useDispatch()
-    
+    const [loginStarted, setLoginStarted] = useState(false)
     const {isLoading,message,error} = useSelector(store=>store.userSignup)
     
     if(message) toast(message,{
@@ -51,6 +51,7 @@ const SignUp = ()=>{
                 values.confirmPassword=''
                 values.profilePicUrl=''
                 setAvatar('')
+                setLoginStarted(true)
             }}
             >
                 {({
@@ -65,6 +66,7 @@ const SignUp = ()=>{
                         <div className="form-error">{errors.password && touched.password && errors.password}</div>
                         <input value={values.confirmPassword} type="password" name="confirmPassword" onChange={handleChange} placeholder="Confirm Password"></input>
                         <div className="form-error">{errors.confirmPassword && touched.confirmPassword && errors.confirmPassword}</div>
+                        <span>Choose Avatar:</span>
                         <input type="file" accept="image/*" name="profilePicUrl" onChange={(e)=>{
                             const image = e.currentTarget.files[0]
                             setFieldValue('profilePicUrl',image)
@@ -72,7 +74,18 @@ const SignUp = ()=>{
 
                             }}></input>
                         {avatar && <img className="preview-img" src={avatar} alt="avatar"></img>}
-                        <button type="submit" className="submit-btn" disabled={isLoading}>Submit</button>
+                        <button type="submit" className="submit-btn" disabled={isLoading}>Submit <LineWave
+                            height="100"
+                            width="100"
+                            color="#4fa94d"
+                            ariaLabel="line-wave"
+                            wrapperStyle={{}}
+                            wrapperClass=""
+                            visible={loginStarted}
+                            firstLineColor=""
+                            middleLineColor=""
+                            lastLineColor=""
+                        /></button>
                     </form>
                 )}
             </Formik>

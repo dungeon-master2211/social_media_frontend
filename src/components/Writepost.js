@@ -11,7 +11,7 @@ const Writepost = () => {
     const [postImgUrl,setPostImgUrl] = useState('')
     const dispatch = useDispatch()
     function createNewPost(){
-      if(post.length){
+      if(post.length||postImgUrl.length){
         const fdata = new FormData()
         fdata.append('author',user?._id)
         fdata.append('post_text',post)
