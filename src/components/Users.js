@@ -8,6 +8,7 @@ const socket = io('https://chat-backend-00et.onrender.com',{
     autoConnect:false
 })
 const Users = ()=>{
+    const [loadingFriends,setLoadingFriends] = useState(false)
     const [userDetail,setUserDetail] = useState({})
     const [peopleTyping,setPepoleTyping] = useState([])
     const [friends,setFriends] = useState([])
@@ -17,6 +18,7 @@ const Users = ()=>{
     const [showUsers,setShowUsers] = useState(true)
     const [showChats,setShowChats] = useState(false)
     useEffect(()=>{
+        setLoadingFriends(true)
         getUserFriends()
         socket.auth = {myId:id}
         socket.connect()
@@ -65,6 +67,7 @@ const Users = ()=>{
     }
 
     async function getUserFriends(){
+        
         const res = await fetch(backend_url+`/getUserById/${id}`)
         const data = await res.json()
         console.log(data)
@@ -75,6 +78,7 @@ const Users = ()=>{
         })
         setFriends(friendsData)
         setFriendsMsgs(fmsgs)
+        setLoadingFriends(false)
     }
     console.log(friends)
 
@@ -103,6 +107,7 @@ const Users = ()=>{
         setShowChats(false)
         setShowUsers(true)
     }
+    if(loadingFriends) return <Shimmer/>
     return(
         <div className="chat-app">
             {showUsers&& <div className="userwindow">
@@ -131,7 +136,7 @@ const Users = ()=>{
                     </div>
                     
                 </div>
-                }):<Shimmer/>}
+                }):<h2>No friends to chat, make some! 😛</h2>}
             </div>}
             {showChats && <div>
                 
