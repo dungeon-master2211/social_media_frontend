@@ -1,9 +1,9 @@
 import { useState,useEffect } from "react"
 import ChatWindow from "./ChatWindow"
 import { backend_url } from "../constants";
-import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import {io} from "socket.io-client"
+import Shimmercard from "./Shimmercard";
 const socket = io('https://chat-backend-00et.onrender.com',{
     autoConnect:false
 })
@@ -107,7 +107,7 @@ const Users = ()=>{
         setShowChats(false)
         setShowUsers(true)
     }
-    if(loadingFriends) return <Shimmer/>
+    if(loadingFriends) return <Shimmercard/>
     return(
         <div className="chat-app">
             {showUsers&& <div className="userwindow">
@@ -136,7 +136,7 @@ const Users = ()=>{
                     </div>
                     
                 </div>
-                }):<h2>No friends to chat, make some! 😛</h2>}
+                }):<h2><center>No friends to chat, make some! ✌</center> </h2>}
             </div>}
             {showChats && <div>
                 
